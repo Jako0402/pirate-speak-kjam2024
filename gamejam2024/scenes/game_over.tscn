@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://krqjlnvjsyrb"]
+
+[ext_resource type="Script" uid="uid://bw5vw7wua71wp" path="res://scripts/game_over.gd" id="1_rxrt8"]
+[ext_resource type="Texture2D" uid="uid://86q5jvndv1je" path="res://sprites/Background.png" id="2_4b0ek"]
+[ext_resource type="Texture2D" uid="uid://mfm33ijajsum" path="res://fonts/Retry.png" id="2_08krk"]
+[ext_resource type="FontFile" uid="uid://co0uvdbxged2e" path="res://fonts/PixelOperator8.ttf" id="2_8vq66"]
+[ext_resource type="Texture2D" uid="uid://dvxraieh73icj" path="res://fonts/Retry-hover.png" id="3_35jkn"]
+[ext_resource type="Texture2D" uid="uid://i1q5pwlbadca" path="res://fonts/Game_over.png" id="3_xd3pg"]
+[ext_resource type="Texture2D" uid="uid://bep53rp1yb84f" path="res://fonts/Back.png" id="4_a3i83"]
+[ext_resource type="Texture2D" uid="uid://dp4opp6ciccl5" path="res://fonts/Back-hover.png" id="5_72sxn"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rxrt8")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.349689, 0.349689, 0.349689, 1)
+z_index = -5
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1148.0
+offset_bottom = 645.0
+texture = ExtResource("2_4b0ek")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 2
+offset_left = 382.0
+offset_top = 226.0
+offset_right = 778.0
+offset_bottom = 258.0
+theme_override_fonts/font = ExtResource("2_8vq66")
+theme_override_font_sizes/font_size = 32
+text = "Your score was:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 433.0
+offset_top = 282.0
+offset_right = 643.0
+offset_bottom = 434.0
+scale = Vector2(1.41764, 2.28904)
+
+[node name="Retry" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_08krk")
+texture_hover = ExtResource("3_35jkn")
+stretch_mode = 0
+
+[node name="Back" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_a3i83")
+texture_hover = ExtResource("5_72sxn")
+stretch_mode = 0
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(577, 116)
+scale = Vector2(3.69216, 3.69216)
+texture = ExtResource("3_xd3pg")
+
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

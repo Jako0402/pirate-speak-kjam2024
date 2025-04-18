@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://cejy6ne6fvmr3"]
+
+[ext_resource type="Script" uid="uid://4awe6oyngl28" path="res://scripts/main_menu.gd" id="1_ie66r"]
+[ext_resource type="Texture2D" uid="uid://86q5jvndv1je" path="res://sprites/Background.png" id="2_mt4j6"]
+[ext_resource type="Texture2D" uid="uid://cy5ydon6fhda" path="res://sprites/Play.png" id="3_882dk"]
+[ext_resource type="Texture2D" uid="uid://c4rk0h0lad7mx" path="res://sprites/Credits.png" id="4_c2hjs"]
+[ext_resource type="Texture2D" uid="uid://d163nm6wql51s" path="res://sprites/Poles.png" id="4_qt0eb"]
+[ext_resource type="Texture2D" uid="uid://nbghm40m74ue" path="res://sprites/play_hover.png" id="4_tami0"]
+[ext_resource type="Texture2D" uid="uid://c0mto3ju8100n" path="res://sprites/Quit.png" id="5_hdc38"]
+[ext_resource type="Texture2D" uid="uid://g3v1v5yy6h7o" path="res://sprites/credits-hover.png" id="6_7h5yl"]
+[ext_resource type="Texture2D" uid="uid://c64dk8kycadvh" path="res://sprites/Title.png" id="7_024wi"]
+[ext_resource type="Texture2D" uid="uid://dxrg5d2qfdktb" path="res://sprites/quit-hover.png" id="8_tls0u"]
+[ext_resource type="AudioStream" uid="uid://gxays0crvk68" path="res://fonts/Bongo beat.mp3" id="11_3gsgp"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ie66r")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -5
+layout_mode = 0
+offset_right = 1147.0
+offset_bottom = 645.0
+scale = Vector2(1.0095, 1.0095)
+texture = ExtResource("2_mt4j6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 195.0
+offset_right = 552.0
+offset_bottom = 315.0
+scale = Vector2(2.27806, 4.52773)
+
+[node name="Start" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_882dk")
+texture_hover = ExtResource("4_tami0")
+stretch_mode = 0
+
+[node name="Credits" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_c2hjs")
+texture_hover = ExtResource("6_7h5yl")
+stretch_mode = 0
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_hdc38")
+texture_hover = ExtResource("8_tls0u")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 19.0
+offset_right = 444.0
+offset_bottom = 59.0
+scale = Vector2(4.15142, 4.15142)
+texture = ExtResource("7_024wi")
+
+[node name="Poles" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(590, 427)
+rotation = 0.0120002
+scale = Vector2(6.63951, 6.63951)
+texture = ExtResource("4_qt0eb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3gsgp")
+volume_db = 12.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

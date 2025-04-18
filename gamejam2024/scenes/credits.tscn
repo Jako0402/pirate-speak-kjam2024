@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb7gokd5w17p8"]
+
+[ext_resource type="Texture2D" uid="uid://csaxqys55wm7q" path="res://sprites/Credit-scene.png" id="1_kemta"]
+[ext_resource type="Script" uid="uid://umk031kesd53" path="res://scripts/credits.gd" id="1_ynfbc"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ynfbc")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -5
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1148.0
+offset_bottom = 645.0
+scale = Vector2(1.00416, 1.00416)
+texture = ExtResource("1_kemta")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 172.0
+offset_top = 531.0
+offset_right = 222.0
+offset_bottom = 562.0
+rotation = -0.0495682
+scale = Vector2(3.86214, 2.88966)
+text = "BACK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqf3c83germgn"]
+
+[ext_resource type="Script" uid="uid://dxal7xapopibq" path="res://scripts/instructions.gd" id="1_62ypp"]
+[ext_resource type="Texture2D" uid="uid://b3xd24b48tvlx" path="res://sprites/Instruction_screen.png" id="3_5m4lg"]
+[ext_resource type="FontFile" uid="uid://co0uvdbxged2e" path="res://fonts/PixelOperator8.ttf" id="3_bo4lw"]
+[ext_resource type="Texture2D" uid="uid://cyudekjcn13x4" path="res://fonts/Footer.png" id="4_cd6hp"]
+
+[node name="Instructions" type="Node2D"]
+script = ExtResource("1_62ypp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -275.0
+offset_top = 30.0
+offset_right = 153.0
+offset_bottom = 72.0
+rotation = -0.374616
+theme_override_fonts/font = ExtResource("3_bo4lw")
+theme_override_font_sizes/font_size = 32
+text = "New instruction: "
+
+[node name="Instruction" type="Label" parent="."]
+offset_left = -191.0
+offset_top = -41.0
+offset_right = 42.0
+offset_bottom = 1.0
+rotation = -0.360504
+theme_override_colors/font_color = Color(0.352941, 0.32549, 0.32549, 1)
+theme_override_fonts/font = ExtResource("3_bo4lw")
+theme_override_font_sizes/font_size = 32
+text = "[her står ny instruktion]"
+
+[node name="Previous" type="Label" parent="."]
+offset_left = -348.0
+offset_top = 90.0
+offset_right = 88.0
+offset_bottom = 221.0
+rotation = -0.3749
+theme_override_colors/font_color = Color(0.352941, 0.32549, 0.32549, 1)
+theme_override_fonts/font = ExtResource("3_bo4lw")
+text = "[hohoho]"
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 571.0
+offset_bottom = 321.0
+scale = Vector2(1.00466, 1.00466)
+texture = ExtResource("3_5m4lg")
+
+[node name="Footer" type="Sprite2D" parent="."]
+position = Vector2(18, 299)
+scale = Vector2(4.86294, 3.93704)
+texture = ExtResource("4_cd6hp")
+
+[node name="Label" type="Label" parent="Footer"]
+z_index = 1
+offset_left = -108.4
+offset_top = -2.47035
+offset_right = 517.6
+offset_bottom = 17.5296
+scale = Vector2(0.662478, 0.662478)
+theme_override_fonts/font = ExtResource("3_bo4lw")
+theme_override_font_sizes/font_size = 8
+text = "1 = business   2 = tea   3 = opportunity  4 = literacy"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true

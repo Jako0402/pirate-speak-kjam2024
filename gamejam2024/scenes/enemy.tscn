@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkyl5s2bthf5v"]
+
+[ext_resource type="Script" uid="uid://d3cl4j0ybbk1a" path="res://scripts/enemy.gd" id="1_jp1xh"]
+[ext_resource type="Texture2D" uid="uid://cnjsrebtbv2xu" path="res://sprites/Trader Crowd.png" id="2_losv6"]
+[ext_resource type="PackedScene" uid="uid://cexhqwngxomwt" path="res://scenes/bar_timer.tscn" id="3_7mswp"]
+[ext_resource type="FontFile" uid="uid://co0uvdbxged2e" path="res://fonts/PixelOperator8.ttf" id="3_74r2r"]
+[ext_resource type="Texture2D" uid="uid://dwciqfu0xcjba" path="res://sprites/Speach Bubble.png" id="4_m563v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8xhl"]
+atlas = ExtResource("2_losv6")
+region = Rect2(5, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1g1w"]
+atlas = ExtResource("2_losv6")
+region = Rect2(69, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpeug"]
+atlas = ExtResource("2_losv6")
+region = Rect2(133, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk21l"]
+atlas = ExtResource("2_losv6")
+region = Rect2(197, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a8cg"]
+atlas = ExtResource("2_losv6")
+region = Rect2(261, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu8j5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8xhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1g1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpeug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk21l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a8cg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node2D"]
+position = Vector2(495, 189)
+script = ExtResource("1_jp1xh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 60)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_hu8j5")
+autoplay = "default"
+frame_progress = 0.803282
+
+[node name="FeedbackLabel" type="Label" parent="."]
+z_index = 1
+offset_left = -90.0
+offset_top = -2.0
+offset_right = -20.0
+offset_bottom = 21.0
+pivot_offset = Vector2(-4, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_74r2r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Seq_label" type="Label" parent="."]
+offset_left = -415.0
+offset_top = -17.0
+offset_right = -23.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_74r2r")
+text = "..."
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="BarTimer" parent="." instance=ExtResource("3_7mswp")]
+position = Vector2(-16, 151)
+
+[node name="SpeachBubble" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(68.5404, 3.61316)
+scale = Vector2(-5.02043, 6.53268)
+texture = ExtResource("4_m563v")
+offset = Vector2(27.9937, 1.4369)
+
+[connection signal="timeout" from="BarTimer" to="." method="_on_bar_timer_timeout"]

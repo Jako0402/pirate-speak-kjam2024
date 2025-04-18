@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciqcdwkbhiola"]
+
+[ext_resource type="Script" uid="uid://two772pmihmm" path="res://scripts/health_bar.gd" id="1_03q8p"]
+[ext_resource type="Texture2D" uid="uid://c8g12ha35cxh3" path="res://sprites/Health Bar.png" id="2_lxeyj"]
+[ext_resource type="Texture2D" uid="uid://cbe3qpvjw1501" path="res://sprites/Player Head Icon.png" id="3_5mi5o"]
+
+[node name="HealthBar" type="Node2D"]
+script = ExtResource("1_03q8p")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_right = 510.0
+offset_bottom = 71.0
+max_value = 7.0
+step = 1.0
+show_percentage = false
+
+[node name="Bar" type="Sprite2D" parent="."]
+position = Vector2(277.917, 36.25)
+scale = Vector2(9.05556, 9.05556)
+texture = ExtResource("2_lxeyj")
+
+[node name="Marker" type="Sprite2D" parent="Bar"]
+position = Vector2(-5.51227, -0.579755)
+scale = Vector2(0.819726, 0.819726)
+texture = ExtResource("3_5mi5o")
+offset = Vector2(3, 0)

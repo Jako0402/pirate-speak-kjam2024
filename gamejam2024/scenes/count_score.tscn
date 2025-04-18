@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://drwibmboodyc7"]
+
+[ext_resource type="Script" uid="uid://bnjwbwhakfjq2" path="res://scripts/count_score.gd" id="1_c74v1"]
+[ext_resource type="Texture2D" uid="uid://b2soho7s6xit0" path="res://sprites/player.png" id="2_4pxwn"]
+[ext_resource type="FontFile" uid="uid://co0uvdbxged2e" path="res://fonts/PixelOperator8.ttf" id="3_lrfl7"]
+[ext_resource type="PackedScene" uid="uid://ciqcdwkbhiola" path="res://scenes/health_bar.tscn" id="3_mp16t"]
+[ext_resource type="Texture2D" uid="uid://86q5jvndv1je" path="res://sprites/Background.png" id="4_o1pqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec3dg"]
+atlas = ExtResource("2_4pxwn")
+region = Rect2(135, 0, 27, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd4qf"]
+atlas = ExtResource("2_4pxwn")
+region = Rect2(108, 0, 27, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bg16d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec3dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd4qf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CountScore" type="Node2D"]
+script = ExtResource("1_c74v1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -52)
+scale = Vector2(9.75218, 9.75218)
+sprite_frames = SubResource("SpriteFrames_bg16d")
+autoplay = "default"
+frame_progress = 0.0047984
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+offset_left = -165.0
+offset_top = -213.0
+offset_right = -78.0
+offset_bottom = -190.0
+scale = Vector2(2.32141, 2.32141)
+theme_override_fonts/font = ExtResource("3_lrfl7")
+text = "You score:"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_mp16t")]
+position = Vector2(-222, 130)
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.349689, 0.349689, 0.349689, 1)
+z_index = -5
+offset_left = -573.0
+offset_top = -325.0
+offset_right = 574.0
+offset_bottom = 320.0
+scale = Vector2(1.00682, 1.00682)
+texture = ExtResource("4_o1pqj")
+
+[node name="level" type="Label" parent="."]
+z_index = 4
+offset_left = -177.0
+offset_top = -295.0
+offset_right = 127.0
+offset_bottom = -212.0
+theme_override_fonts/font = ExtResource("3_lrfl7")
+theme_override_font_sizes/font_size = 64
+text = "Level:"
